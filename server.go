@@ -89,7 +89,7 @@ func startGame(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	players := deckerPtr.GetPlayers()
+	players := deckerPtr.GetSortedPlayers()
 
 	for _, player := range players {
 		playerID := player.Id()
