@@ -90,7 +90,7 @@ func startGame(w http.ResponseWriter, r *http.Request) {
 	players := deckerPtr.GetSortedPlayers()
 
 	for _, player := range players {
-		playerID := player.Id()
+		playerID := player.ID()
 		playerIDToDecker[playerID] = deckerPtr
 	}
 
@@ -104,7 +104,7 @@ func startGame(w http.ResponseWriter, r *http.Request) {
 		CurrentHands    []hand.Hand
 	}
 
-	firstPlayerFeed := players[0].Id()
+	firstPlayerFeed := players[0].ID()
 
 	playEvent := PlayEvent{
 		Cards:    *(deckerPtr.GetPlayerCards(players[0])),
