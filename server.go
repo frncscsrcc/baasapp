@@ -8,7 +8,6 @@ import (
 	"github.com/briscola-as-a-service/game/hand"
 	"github.com/briscola-as-a-service/game/player"
 	"github.com/frncscsrcc/longpoll"
-	"github.com/frncscsrcc/memorydb"
 	"github.com/frncscsrcc/resthelper"
 	"github.com/frncscsrcc/waitinglist"
 	"log"
@@ -17,7 +16,6 @@ import (
 
 // Global variables
 var lp *longpoll.LongPoll
-var db *memorydb.DB
 var wls *waitinglist.WaitingLists
 
 var playerIDToDecker map[string]*game.Decker
@@ -147,7 +145,6 @@ func main() {
 	}
 
 	lp = longpoll.New()
-	db = memorydb.NewDB(memorydb.Options{MaxGamesPerPlayer: maxGamesPerPlayer})
 	mux := http.NewServeMux()
 	mux.HandleFunc("/start", startGame)
 	mux.HandleFunc("/play", playGame)
